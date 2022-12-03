@@ -24,4 +24,4 @@ jobs:
           push: true
           platforms: linux/amd64
           context: build/panel
-          tags: ghcr.io/pterodactyl/development/panel:latest
+          tags: ghcr.io/Linux123123/ptero-dev/panel:latest
