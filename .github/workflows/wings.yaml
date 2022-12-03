@@ -24,4 +24,4 @@ jobs:
           push: true
           platforms: linux/amd64
           context: build/wings
-          tags: ghcr.io/Linux123123/ptero-dev/wings:latest
+          tags: ghcr.io/linux123123/ptero-dev/wings:latest
