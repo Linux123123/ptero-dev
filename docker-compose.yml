@@ -21,10 +21,9 @@ services:
       - ./docker/certificates:/etc/certs:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
   app:
-    image: ghcr.io/pterodactyl/development/panel:latest
-    # build:
-    #   context: ./build/panel
-    #   dockerfile: Dockerfile
+    build:
+      context: ./build/panel
+      dockerfile: Dockerfile
     stop_grace_period: '1s'
     networks:
       pterodactyl:
@@ -58,10 +57,9 @@ services:
       SESSION_DRIVER: redis
       CACHE_DRIVER: redis
   wings:
-    image: ghcr.io/pterodactyl/development/wings:latest
-    # build:
-    #   context: ./build/wings
-    #   dockerfile: Dockerfile
+    build:
+      context: ./build/wings
+      dockerfile: Dockerfile
     stop_grace_period: '1s'
     tty: true
     stdin_open: true
@@ -83,9 +81,6 @@ services:
       - "traefik.http.services.wings.loadbalancer.server.port=8080"
     cap_add:
       - SYS_ADMIN
-    devices:
-      - /dev/loop0
-      - /dev/loop-control
   mysql:
     image: mariadb:10.7
     restart: unless-stopped

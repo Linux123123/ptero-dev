@@ -38,6 +38,7 @@ RUN apt -y update \
 		php8.1-mysql \
 		php8.1-mbstring \
 		php8.1-bcmath \
+        php8.1-bz2 \
 		php8.1-xml \
 		php8.1-fpm \
 		php8.1-curl \

@@ -28,7 +28,7 @@ if [ -d "/etc/certs" ]; then
 fi
 
 cd /var/www/html || exit 1
-chown -R pterodactyl:www-data storage
+chown -R pterodactyl:www-data ./*
 chmod -R 777 storage/* bootstrap/cache
 
 if [ $# -gt 0 ]; then
