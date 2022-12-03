@@ -3,6 +3,7 @@
 # If the environment file for the Panel exists we want to source it so
 # that any environment variables defined within that are passed along to
 # additional commands we may call here.
+
 if [ -f ./code/panel/.env ]; then
   source ./code/panel/.env
 fi
@@ -10,11 +11,7 @@ fi
 export WWWUSER=${WWWUSER:-$UID}
 export WWWGROUP=${WWWGROUP:-$(id -g)}
 
-if ! docker compose &>/dev/null; then
-  DOCKER_COMPOSE=(docker-compose)
-else
-  DOCKER_COMPOSE=(docker compose)
-fi
+DOCKER_COMPOSE=(docker compose --project-directory /home/linux123123/Github/ptero-dev)
 
 ARGS=()
 PEXEC=(exec -u pterodactyl app)
@@ -50,5 +47,8 @@ elif [ "$1" == "serve" ]; then
 else
   ARGS+=("$@")
 fi
+
+echo "${DOCKER_COMPOSE[@]}"
+echo "${ARGS[@]}"
 
 "${DOCKER_COMPOSE[@]}" "${ARGS[@]}"

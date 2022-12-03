@@ -21,7 +21,7 @@ services:
       - ./docker/certificates:/etc/certs:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
   app:
-    image: ghcr.io/linux123123/ptero-dev/wings:latest
+    image: ghcr.io/linux123123/ptero-dev/panel:latest
     # build:
     #   context: ./build/panel
     #   dockerfile: Dockerfile
@@ -108,34 +108,6 @@ services:
     restart: unless-stopped
     networks:
       - pterodactyl
-  minio:
-    image: minio/minio:RELEASE.2022-02-05T04-40-59Z
-    restart: unless-stopped
-    command: server --console-address ":9001" /var/lib/minio
-    environment:
-      MINIO_ROOT_USER: minio
-      MINIO_ROOT_PASSWORD: password
-    expose:
-      - 9000
-      - 9001
-    networks:
-      pterodactyl:
-        aliases:
-          - s3.minio.pterodactyl.test
-    volumes:
-      - minio:/var/lib/minio
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.minio.tls=true"
-      - "traefik.http.routers.minio.rule=Host(`s3.minio.pterodactyl.test`)"
-      - "traefik.http.routers.minio.entrypoints=https"
-      - "traefik.http.routers.minio.service=minio"
-      - "traefik.http.routers.minio-console.tls=true"
-      - "traefik.http.routers.minio-console.rule=Host(`minio.pterodactyl.test`)"
-      - "traefik.http.routers.minio-console.entrypoints=https"
-      - "traefik.http.routers.minio-console.service=minio-console"
-      - "traefik.http.services.minio.loadbalancer.server.port=9000"
-      - "traefik.http.services.minio-console.loadbalancer.server.port=9001"
 
 networks:
   pterodactyl:
