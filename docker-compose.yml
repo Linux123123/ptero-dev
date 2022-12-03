@@ -21,9 +21,10 @@ services:
       - ./docker/certificates:/etc/certs:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
   app:
-    build:
-      context: ./build/panel
-      dockerfile: Dockerfile
+    image: ghcr.io/linux123123/ptero-dev/wings:latest
+    # build:
+    #   context: ./build/panel
+    #   dockerfile: Dockerfile
     stop_grace_period: '1s'
     networks:
       pterodactyl:
@@ -57,9 +58,10 @@ services:
       SESSION_DRIVER: redis
       CACHE_DRIVER: redis
   wings:
-    build:
-      context: ./build/wings
-      dockerfile: Dockerfile
+    image: ghcr.io/linux123123/ptero-dev/wings:latest
+    # build:
+    #   context: ./build/wings
+    #   dockerfile: Dockerfile
     stop_grace_period: '1s'
     tty: true
     stdin_open: true
