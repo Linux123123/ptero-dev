@@ -48,7 +48,6 @@ else
   ARGS+=("$@")
 fi
 
-echo "${DOCKER_COMPOSE[@]}"
-echo "${ARGS[@]}"
+echo "${DOCKER_COMPOSE[@]}" "${ARGS[@]}"
 
 "${DOCKER_COMPOSE[@]}" "${ARGS[@]}"
