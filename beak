@@ -11,7 +11,7 @@ fi
 export WWWUSER=${WWWUSER:-$UID}
 export WWWGROUP=${WWWGROUP:-$(id -g)}
 
-DOCKER_COMPOSE=(docker compose --project-directory /home/linux123123/Github/ptero-dev)
+DOCKER_COMPOSE=(docker compose --project-directory /home/linux123123/Github/sparked-dev)
 
 ARGS=()
 PEXEC=(exec -u pterodactyl app)
