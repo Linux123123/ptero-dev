@@ -17,6 +17,7 @@ RUN apt -y update \
     && curl -sL https://packages.sury.org/php/apt.gpg | apt-key add - \
 	&& apt -y update \
 	&& apt -y upgrade \
+    && curl -fsSL https://get.pnpm.io/install.sh | sh - \
 	&& apt -y --no-install-recommends install \
         locales \
         iproute2 \
