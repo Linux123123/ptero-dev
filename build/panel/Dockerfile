@@ -17,7 +17,6 @@ RUN apt -y update \
     && curl -sL https://packages.sury.org/php/apt.gpg | apt-key add - \
 	&& apt -y update \
 	&& apt -y upgrade \
-    && curl -fsSL https://get.pnpm.io/install.sh | sh - \
 	&& apt -y --no-install-recommends install \
         locales \
         iproute2 \
@@ -48,6 +47,8 @@ RUN apt -y update \
 	&& curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
 	&& apt autoremove -y \
 	&& rm -rf /var/lib/apt/lists/*
+
+RUN curl -fsSL https://get.pnpm.io/install.sh | sh -
 
 COPY entrypoint /usr/local/bin/entrypoint
 COPY setup-pterodactyl /usr/local/bin/setup-pterodactyl
