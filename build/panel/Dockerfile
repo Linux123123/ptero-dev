@@ -48,7 +48,7 @@ RUN apt -y update \
 	&& apt autoremove -y \
 	&& rm -rf /var/lib/apt/lists/*
 
-RUN curl -fsSL https://get.pnpm.io/install.sh | sh -
+RUN npm install -g pnpm
 
 COPY entrypoint /usr/local/bin/entrypoint
 COPY setup-pterodactyl /usr/local/bin/setup-pterodactyl
