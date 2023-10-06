@@ -40,7 +40,7 @@ elif [ "$1" == "tinker" ]; then
   shift 1
   ARGS+=("${PEXEC[@]}" php artisan tinker)
 
-elif [ "$1" == "serve" ]; then
+elif [ "$1" == "dev" ]; then
   shift 1
   ARGS+=("${PEXEC[@]}" pnpm run dev "$@")
 
