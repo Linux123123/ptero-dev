@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   traefik:
@@ -26,7 +26,7 @@ services:
     # build:
     #   context: ./build/panel
     #   dockerfile: Dockerfile
-    stop_grace_period: '1s'
+    stop_grace_period: "1s"
     networks:
       pterodactyl:
         aliases:
@@ -46,7 +46,8 @@ services:
       - "traefik.http.routers.vite-dev-server.rule=Host(`vite.pterodactyl.test`)"
       - "traefik.http.routers.vite-dev-server.entrypoints=https"
       - "traefik.http.routers.vite-dev-server.service=vite-dev-server"
-      - "traefik.http.services.vite-dev-server.loadbalancer.server.port=8080"
+      - "traefik.http.services.vite-dev-server.loadbalancer.server.port=8443"
+      - "traefik.http.services.vite-dev-server.loadbalancer.server.scheme=https"
     environment:
       TZ: ${TZ:-UTC}
       WWWUSER: ${WWWUSER:-$$(id -u)}
@@ -63,7 +64,7 @@ services:
     build:
       context: ./build/wings
       dockerfile: Dockerfile
-    stop_grace_period: '1s'
+    stop_grace_period: "1s"
     tty: true
     stdin_open: true
     networks:

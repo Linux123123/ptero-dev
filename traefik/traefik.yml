@@ -3,6 +3,8 @@ global:
 api:
   insecure: true
   dashboard: true
+serversTransport:
+  insecureSkipVerify: true
 entryPoints:
   https:
     address: ":443"
@@ -14,4 +16,3 @@ providers:
     endpoint: unix:///var/run/docker.sock
     exposedByDefault: false
     network: pterodactyl
-
