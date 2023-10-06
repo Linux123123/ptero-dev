@@ -33,7 +33,10 @@ RUN apt -y update \
     && rm -rf go*.gz \
     && /usr/local/go/bin/go install github.com/go-delve/delve/cmd/dlv@latest \
     && usermod -aG docker root \
-    && echo "export PATH=\$PATH:/usr/local/go/bin" >> /etc/bash.bashrc
+    && echo "export PATH=\$PATH:/usr/local/go/bin" >> /etc/bash.bashrc \
+    && mkdir -p /home/root/wings \
+    && echo "cd /home/root/wings && make debug" >> ~/.bashrc \
+    && git config --global --add safe.directory /home/root/wings
 
 EXPOSE 8080
 EXPOSE 2022

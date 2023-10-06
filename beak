@@ -42,7 +42,7 @@ elif [ "$1" == "tinker" ]; then
 
 elif [ "$1" == "serve" ]; then
   shift 1
-  ARGS+=("${PEXEC[@]}" yarn run serve "$@")
+  ARGS+=("${PEXEC[@]}" pnpm run dev "$@")
 
 else
   ARGS+=("$@")

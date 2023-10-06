@@ -3,11 +3,12 @@ version: '3.8'
 services:
   traefik:
     image: traefik:2.6
-    restart: always
+    restart: on-failure
     networks:
       pterodactyl:
         aliases:
           - pterodactyl.test
+          - vite.pterodactyl.test
           - minio.pterodactyl.test
           - s3.minio.pterodactyl.test
           - wings.pterodactyl.test
@@ -41,11 +42,11 @@ services:
       - "traefik.http.routers.app.entrypoints=https"
       - "traefik.http.routers.app.service=app"
       - "traefik.http.services.app.loadbalancer.server.port=80"
-      - "traefik.http.routers.webpack-dev-server.tls=true"
-      - "traefik.http.routers.webpack-dev-server.rule=Host(`pterodactyl.test`) && PathPrefix(`/webpack@hmr`, `/sockjs-node`)"
-      - "traefik.http.routers.webpack-dev-server.entrypoints=https"
-      - "traefik.http.routers.webpack-dev-server.service=webpack-dev-server"
-      - "traefik.http.services.webpack-dev-server.loadbalancer.server.port=8080"
+      - "traefik.http.routers.vite-dev-server.tls=true"
+      - "traefik.http.routers.vite-dev-server.rule=Host(`vite.pterodactyl.test`)"
+      - "traefik.http.routers.vite-dev-server.entrypoints=https"
+      - "traefik.http.routers.vite-dev-server.service=vite-dev-server"
+      - "traefik.http.services.vite-dev-server.loadbalancer.server.port=8080"
     environment:
       TZ: ${TZ:-UTC}
       WWWUSER: ${WWWUSER:-$$(id -u)}
@@ -58,10 +59,10 @@ services:
       SESSION_DRIVER: redis
       CACHE_DRIVER: redis
   wings:
-    image: ghcr.io/linux123123/ptero-dev/wings:latest
-    # build:
-    #   context: ./build/wings
-    #   dockerfile: Dockerfile
+    # image: ghcr.io/linux123123/ptero-dev/wings:latest
+    build:
+      context: ./build/wings
+      dockerfile: Dockerfile
     stop_grace_period: '1s'
     tty: true
     stdin_open: true
@@ -85,7 +86,7 @@ services:
       - SYS_ADMIN
   mysql:
     image: mariadb:10.7
-    restart: unless-stopped
+    restart: on-failure
     ports:
       - "3306:3306"
     command:
@@ -105,7 +106,7 @@ services:
       - pterodactyl
   redis:
     image: redis:alpine
-    restart: unless-stopped
+    restart: on-failure
     networks:
       - pterodactyl
 
