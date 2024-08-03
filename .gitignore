@@ -2,4 +2,5 @@
 .idea
 
 docker/certificates/*
+docker/wings1/*
 !docker/certificates/.gitkeep

@@ -30,6 +30,10 @@ elif [ "$1" == "wings" ]; then
   shift 1
   "${DOCKER_COMPOSE[@]}" exec -u root wings bash
 
+elif [ "$1" == "wings1" ]; then
+  shift 1
+  "${DOCKER_COMPOSE[@]}" exec -u root -w /home/root/wings wings1 ./wings_linux_amd64 --debug --ignore-certificate-errors
+
 # Start an artisan instance within the container.
 elif [ "$1" == "artisan" ]; then
   shift 1
