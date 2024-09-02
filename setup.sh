@@ -3,7 +3,7 @@ SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 CERTS_DIR="$SCRIPT_DIR/docker/certificates"
 CODE_DIR="$SCRIPT_DIR/code"
 
-for REPO in "panel" "documentation" "wings"
+for REPO in "panel" "wings"
 do
   if [ ! -d "$CODE_DIR/$REPO" ]; then
     git clone https://github.com/pterodactyl/$REPO.git "$CODE_DIR/$REPO"
