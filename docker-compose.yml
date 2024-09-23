@@ -34,6 +34,7 @@ services:
       - ./code/panel:/var/www/html
       - ./docker/certificates:/etc/certs:ro
       - ./docker/php:/etc/php/mods-available:ro
+      - ${HOME}/.ssh:/home/pterodactyl/.ssh:ro
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.app.tls=true"

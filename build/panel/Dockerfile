@@ -26,6 +26,7 @@ RUN apt -y update \
         tar \
         unzip \
         git \
+        ssh \
         supervisor \
         cron \
         nodejs \
