@@ -61,7 +61,7 @@ RUN useradd -m pterodactyl \
     && chmod +x /usr/local/bin/entrypoint \
     && rm -rf /etc/nginx/sites-enabled/* \
     && ln -s /etc/nginx/sites-available/pterodactyl.conf /etc/nginx/sites-enabled/ \
-    && phpdismod -s cli \
+    # && phpdismod -s cli xdebug \
     && mkdir -p /var/run/php \
     && mkdir -p /var/www/html \
     && (crontab -l 2>/dev/null; echo "* * * * * php /var/www/html/artisan schedule:run >> /dev/null 2>&1") | crontab -
