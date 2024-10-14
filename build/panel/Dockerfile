@@ -12,7 +12,6 @@ RUN apt -y update \
     && apt -y --no-install-recommends install lsb-release ca-certificates apt-transport-https software-properties-common gnupg2 curl sudo  \
     && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
 	&& curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-	&& echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
     && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/sury-php.list \
     && curl -sL https://packages.sury.org/php/apt.gpg | apt-key add - \
 	&& apt -y update \
@@ -30,7 +29,6 @@ RUN apt -y update \
         supervisor \
         cron \
         nodejs \
-        yarn \
         nano \
 	&& apt -y --no-install-recommends install php8.2 \
 		php8.2-cli \

@@ -4,6 +4,8 @@
 # that any environment variables defined within that are passed along to
 # additional commands we may call here.
 
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
 if [ -f ./code/panel/.env ]; then
   source ./code/panel/.env
 fi
@@ -11,7 +13,7 @@ fi
 export WWWUSER=${WWWUSER:-$UID}
 export WWWGROUP=${WWWGROUP:-$(id -g)}
 
-DOCKER_COMPOSE=(docker compose --project-directory /home/linux123123/Github/sparked-dev)
+DOCKER_COMPOSE=(docker compose --project-directory $SCRIPT_DIR)
 
 ARGS=()
 PEXEC=(exec -u pterodactyl app)
