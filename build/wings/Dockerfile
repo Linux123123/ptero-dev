@@ -21,7 +21,7 @@ RUN apt -y update \
         gcc \
         g++ \
         gdb \
-        python \
+        python3 \
         docker-ce \
         docker-ce-cli \
         containerd.io \
