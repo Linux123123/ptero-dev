@@ -21,7 +21,7 @@ services:
       - ./docker/certificates:/etc/certs:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
   app:
-    # image: ghcr.io/linux123123/ptero-dev/panel:latest
+    image: ghcr.io/linux123123/ptero-dev/panel:latest
     build:
       context: ./build/panel
       dockerfile: Dockerfile
@@ -60,7 +60,7 @@ services:
       SESSION_DRIVER: redis
       CACHE_DRIVER: redis
   wings:
-    # image: ghcr.io/linux123123/ptero-dev/wings:latest
+    image: ghcr.io/linux123123/ptero-dev/wings:latest
     build:
       context: ./build/wings
       dockerfile: Dockerfile
@@ -86,7 +86,7 @@ services:
     cap_add:
       - SYS_ADMIN
   wings1:
-    image: debian:12
+    image: debian:12-slim
     stop_grace_period: "1s"
     tty: true
     stdin_open: true
