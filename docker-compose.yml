@@ -7,8 +7,6 @@ services:
         aliases:
           - pterodactyl.test
           - vite.pterodactyl.test
-          - minio.pterodactyl.test
-          - s3.minio.pterodactyl.test
           - wings.pterodactyl.test
           - wings1.pterodactyl.test
     ports:
@@ -94,7 +92,6 @@ services:
       - pterodactyl
     volumes:
       - ./code/wings/build:/home/root/wings
-      - go_modules:/root/go
       - /tmp/pterodactyl1:/tmp/pterodactyl
       - /var/lib/pterodactyl1:/var/lib/pterodactyl
       - /var/run/docker.sock:/var/run/docker.sock:ro
