@@ -30,6 +30,7 @@ RUN apt -y update \
         cron \
         nodejs \
         nano \
+        mariadb-client \
 	&& apt -y --no-install-recommends install php8.2 \
 		php8.2-cli \
 		php8.2-common \
