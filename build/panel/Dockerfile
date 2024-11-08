@@ -44,6 +44,7 @@ RUN apt -y update \
 		php8.2-curl \
 		php8.2-zip \
 		php8.2-xdebug \
+        php8.2-redis \
 	&& curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
 	&& apt autoremove -y \
 	&& rm -rf /var/lib/apt/lists/*
