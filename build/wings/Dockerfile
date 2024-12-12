@@ -13,6 +13,7 @@ RUN apt -y update \
     && apt -y --no-install-recommends install \
         git \
         iputils-ping \
+        jq \
         tar \
         zip \
         nano \
