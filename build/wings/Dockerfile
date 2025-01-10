@@ -41,5 +41,6 @@ RUN apt -y update \
 
 EXPOSE 8080
 EXPOSE 2022
+EXPOSE 2345
 
 WORKDIR /home/root/wings

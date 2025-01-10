@@ -69,6 +69,7 @@ services:
       - pterodactyl
     ports:
       - "2022:2022"
+      - "2345:2345"
     volumes:
       - ./code/wings:/home/root/wings
       - go_modules:/root/go
