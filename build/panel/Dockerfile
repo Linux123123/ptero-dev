@@ -46,7 +46,7 @@ RUN apt -y update \
 		php8.3-xdebug \
         php8.3-redis \
         php8.3-mongodb \
-        php8.3-pqsql \
+        php8.3-pgsql \
 	&& curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
 	&& apt autoremove -y \
 	&& rm -rf /var/lib/apt/lists/*
