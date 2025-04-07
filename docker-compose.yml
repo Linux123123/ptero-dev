@@ -130,6 +130,8 @@ services:
     restart: on-failure
     networks:
       - pterodactyl
+    ports:
+      - "6379:6379"    
 
 networks:
   pterodactyl:
