@@ -1,6 +1,6 @@
 services:
   traefik:
-    image: traefik:2.6
+    image: traefik:latest
     restart: on-failure
     networks:
       pterodactyl:
@@ -9,6 +9,7 @@ services:
           - vite.pterodactyl.test
           - wings.pterodactyl.test
           - wings1.pterodactyl.test
+          - mail.pterodactyl.test
     ports:
       - "443:443"
       - "8080:8080"
@@ -106,7 +107,7 @@ services:
     cap_add:
       - SYS_ADMIN
   mysql:
-    image: mariadb:10.7
+    image: mariadb:latest
     restart: on-failure
     ports:
       - "3306:3306"
@@ -131,7 +132,20 @@ services:
     networks:
       - pterodactyl
     ports:
-      - "6379:6379"    
+      - "6379:6379"
+
+  mailpit:
+    image: "axllent/mailpit:latest"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mailpit.tls=true"
+      - "traefik.http.routers.mailpit.rule=Host(`mail.pterodactyl.test`)"
+      - "traefik.http.routers.mailpit.entrypoints=https"
+      - "traefik.http.services.mailpit.loadbalancer.server.port=8025"
+    ports:
+      - "1025:1025"
+    networks:
+      - pterodactyl
 
 networks:
   pterodactyl:

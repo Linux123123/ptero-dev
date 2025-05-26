@@ -13,7 +13,7 @@ do
 done
 
 mkcert -install
-mkcert pterodactyl.test vite.pterodactyl.test wings.pterodactyl.test wings1.pterodactyl.test minio.pterodactyl.test s3.minio.pterodactyl.test
+mkcert pterodactyl.test vite.pterodactyl.test mail.pterodactyl.test wings.pterodactyl.test wings1.pterodactyl.test
 
 # Because we're doing Docker-in-Docker we actually need these paths to line
 # up correctly with the host system.
