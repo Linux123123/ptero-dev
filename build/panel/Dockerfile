@@ -71,6 +71,8 @@ RUN useradd -m pterodactyl \
     && mkdir -p /var/www/html \
     && (crontab -l 2>/dev/null; echo "* * * * * php /var/www/html/artisan schedule:run >> /dev/null 2>&1") | crontab -
 
+COPY --chown=pterodactyl:www-data configs/.bashrc /home/pterodactyl/.bashrc
+
 WORKDIR /var/www/html
 
 EXPOSE 80
