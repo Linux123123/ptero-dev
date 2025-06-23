@@ -28,7 +28,7 @@ echo ""
 if [ ! -f "/etc/hosts" ]; then
   echo "no system hosts file found, please manually configure your system"
 else
-  for DOMAIN in "vite.pterodactyl.test" "pterodactyl.test" "wings.pterodactyl.test" "minio.pterodactyl.test" "s3.minio.pterodactyl.test"
+  for DOMAIN in "vite.pterodactyl.test" "pterodactyl.test" "wings.pterodactyl.test" "wings1.pterodactyl.test" "mail.pterodactyl.test"
   do
     ESCAPED_DOMAIN=$(echo $DOMAIN | sed "s/\./\\\./g")
     if ! grep -q -E "127\.0\.0\.1\s+$ESCAPED_DOMAIN\s*$" /etc/hosts; then
